@@ -1,3 +1,6 @@
+from ticfyi.app import app
+
+
 __all__: tuple[str, ...] = ()
 
 
