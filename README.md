@@ -22,5 +22,7 @@ to inner circle members:
 ```html
 <script src="https://the.inner-circle.fyi/ring/ring.js" data-domain="your.domain.com"></script>
 ```
+> [!NOTE]
+> This script places a new `div` with `id` `innerCircleWebRing` in the parent element of the script container. If you want to customise the location of the div, simply just add `<div id="innerCircleWebRing"></div>` to the page above wherever the script is loaded & it shall use that one instead.
 
 6. done!
