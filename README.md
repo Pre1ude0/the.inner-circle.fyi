@@ -15,9 +15,14 @@ to inner circle members:
 5. add the following html snippet to your website where you would like the webring to appear on your website
 
 ```html
-<div id="innerCircleWebRing"></div>
 <script src="https://the.inner-circle.fyi/ring/ring.js"></script>
-<script>loadWebRing("your.domain.com");</script>
 ```
+
+> If the page is hosted on a different domain than the one you joined the webring with, you can specify the domain using the `data-domain` or `domain` attributes:
+```html
+<script src="https://the.inner-circle.fyi/ring/ring.js" data-domain="your.domain.com"></script>
+```
+> [!NOTE]
+> This script places a new `div` with `id` `innerCircleWebRing` in the parent element of the script container. If you want to customise the location of the div, simply just add `<div id="innerCircleWebRing"></div>` to the page above wherever the script is loaded & it shall use that one instead.
 
 6. done!
