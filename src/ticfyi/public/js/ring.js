@@ -1,13 +1,21 @@
 const base = "https://the.inner-circle.fyi";
-const script = document.querySelector(`script[src="${base}/ring/ring.js]`)
- // "data-" for recognized/conventional implementation
- // Allow for the attributes to be empty, instead defaulting to the hostname
-const domain = script.getAttribute("data-domain") ?? script.getAttribute("domain") ?? window.location.hostname;
+// `currentScript` remains reliable when this file is served with a hashed URL.
+const script = document.currentScript ?? document.querySelector("script[src*=\"/ring\"]");
+// `data-` is the conventional form; accept the legacy `domain` attribute too.
+const domain = script?.getAttribute("data-domain") || script?.getAttribute("domain") || window.location.hostname;
 
 function loadWebRing(domain) {
-    const container = document.createElement("innerCircleWebRing")
-    container.classList.add("innerCircleWebRing") // Class for styling
-    script.parentElement.appendChild(container)
+    let container = document.getElementById("innerCircleWebRing");
+    if (!container) {
+        const parent = script?.parentElement;
+        if (!parent) return;
+        container = document.createElement("div");
+        container.id = "innerCircleWebRing";
+        parent.appendChild(container);
+    }
+    if (container.dataset.loaded === "true") return;
+    container.classList.add("innerCircleWebRing");
+    container.dataset.loaded = "true";
 
     const from = encodeURIComponent(domain);
 
@@ -54,5 +62,10 @@ function loadWebRing(domain) {
     `;
 }
 
-// Run when page layout is done loading
-document.addEventListener("DOMContentLoaded", () => {loadWebRing(domain)})
+// Run when page layout is done loading, including scripts loaded after DOMContentLoaded.
+const initialize = () => loadWebRing(domain);
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize, {once: true});
+} else {
+    initialize();
+}
