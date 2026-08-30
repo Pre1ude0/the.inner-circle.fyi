@@ -5,8 +5,8 @@ const script = document.querySelector(`script[src="${base}/ring/ring.js]`)
 const domain = script.getAttribute("data-domain") ?? script.getAttribute("domain") ?? window.location.hostname;
 
 function loadWebRing(domain) {
-    const container = document.createElement("innerCircleWebring")
-    container.classList.add("innerCircleWebring") // Class for styling
+    const container = document.createElement("innerCircleWebRing")
+    container.classList.add("innerCircleWebRing") // Class for styling
     script.parentElement.appendChild(container)
 
     const from = encodeURIComponent(domain);
