@@ -20,11 +20,6 @@ __all__: tuple[str, ...] = (
 )
 
 
-SPECIFICALLY_INCLDUED_FILES: Final[list[str]] = [
-    "js/ring.js",
-]
-
-
 def _get_most_recent_commit_hash() -> str:
     try:
         return subprocess.run(
@@ -119,9 +114,6 @@ class TemplateServer(Jinja2Templates):
                 continue
             shutil.copyfile(f"{fonts_dir}/{file}", f"_served/static/fonts/{file}")
             self._served_files["public/fonts/" + file] = f"static/fonts/{file}"
-        for file in SPECIFICALLY_INCLDUED_FILES:
-            shutil.copyfile(f"src/ticfyi/public/{file}", f"_served/static/{file}")
-            self._served_files[file] = f"static/{file}"
 
 
     def load(self) -> None:
