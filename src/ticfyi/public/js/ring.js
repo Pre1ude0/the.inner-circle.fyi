@@ -19,11 +19,11 @@ function loadWebRing(domain) {
         <a href="${base}/ring/back?from_url=${from}" target="_blank" rel="noopener noreferrer">
             <img
                 src="${base}/static/images/inner-back.avif"
-                width="88"
+                width="31"
                 height="31"
                 loading="lazy"
                 style="image-rendering:pixelated"
-                alt="the.inner-circle.fyi 88x31px web ring back button"
+                alt="the.inner-circle.fyi 31x31px web ring back button"
                 id="innerCircleWebRingNavBackwards"
             >
         </a><a href="${base}/" target="_blank" rel="noopener noreferrer">
@@ -39,11 +39,11 @@ function loadWebRing(domain) {
         </a><a href="${base}/ring/next?from_url=${from}" target="_blank" rel="noopener noreferrer">
             <img
                 src="${base}/static/images/inner-forward.avif"
-                width="88"
+                width="31"
                 height="31"
                 loading="lazy"
                 style="image-rendering:pixelated"
-                alt="the.inner-circle.fyi 88x31px web ring forward button"
+                alt="the.inner-circle.fyi 31x31px web ring forward button"
                 id="innerCircleWebRingNavForwards"
             >
         </a>
