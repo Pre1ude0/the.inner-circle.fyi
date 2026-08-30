@@ -18,7 +18,7 @@ function loadWebRing(domain) {
         </style>
         <a href="${base}/ring/back?from_url=${from}" target="_blank" rel="noopener noreferrer">
             <img
-                src="${base}/static/images/inner-back.png"
+                src="${base}/static/images/inner-back.avif"
                 width="88"
                 height="31"
                 loading="lazy"
@@ -28,7 +28,7 @@ function loadWebRing(domain) {
             >
         </a><a href="${base}/" target="_blank" rel="noopener noreferrer">
             <img
-                src="${base}/static/images/button.png"
+                src="${base}/static/images/button.avif"
                 width="88"
                 height="31"
                 loading="lazy"
@@ -38,7 +38,7 @@ function loadWebRing(domain) {
             >
         </a><a href="${base}/ring/next?from_url=${from}" target="_blank" rel="noopener noreferrer">
             <img
-                src="${base}/static/images/inner-forward.png"
+                src="${base}/static/images/inner-forward.avif"
                 width="88"
                 height="31"
                 loading="lazy"
