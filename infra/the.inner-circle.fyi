@@ -1,0 +1,44 @@
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name the.inner-circle.fyi;
+    ssl_certificate /var/www/cert.pem;
+    ssl_certificate_key /var/www/key.pem;
+    client_max_body_size 15m;
+    client_body_timeout 120s;
+    add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains' always;
+
+    # legacy versions of the site set multi-MB cookies; allow oversized request
+    # headers so browsers still holding them don't get 400/431 rejected.
+    client_header_buffer_size 64k;
+    large_client_header_buffers 8 1m;
+
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml application/font-woff font/woff2;
+    gzip_min_length 256;
+
+    location /static/ {
+        alias /opt/websites/the.inner-circle.fyi/_served/static/;
+        access_log off;
+        tcp_nodelay off;
+        sendfile on;
+        location ~* \.(css|js|woff2?|ttf|otf)$ {
+            add_header Cache-Control "public, max-age=31536000, immutable";
+        }
+        location ~* \.(avif|png|jpe?g|gif|svg|webp|json)$ {
+            add_header Cache-Control "public, max-age=86400";
+        }
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:7844;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_read_timeout 60s;
+    }
+}

@@ -1,0 +1,54 @@
+{% set most_recent_commit_hash = most_recent_commit_hash|default('unknown') %}
+
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#30CBE3" />
+        <link rel="stylesheet" href="{{ get_file('public/css/style.css') }}" />
+        <title>the inner circle</title>
+        <meta name="description" content="help we got trapped in a circle" />
+        <meta name="author" content="the inner circle" />
+        <meta name="robots" content="index, follow" />
+    </head>
+    <body>
+        <div class="page">
+            <div class="content">
+                <h1>the inner circle</h1>
+                <div id="innerCircleWebRing"></div>
+
+                <br>
+                <br>
+                <hr>
+                <br>
+                <h2>members</h2>
+                <div class="member-buttons">
+                    {% for member in WEB_RING_MEMBERS %}
+                        <a href="/ring/go-to?member={{ member }}" target="_blank" rel="noopener noreferrer"><img
+                            src="{{ get_file('public/images/member-buttons/' + member + '.png') }}"
+                            width="88"
+                            height="31"
+                            loading="lazy"
+                            style="image-rendering:pixelated"
+                            alt="the.inner-circle.fyi 88x31px web ring forward button"
+                            class="member-button"
+                        ></a>
+                    {% endfor %}
+            </div>
+        </div>
+        <a
+            id="commitHash"
+            href="https://github.com/ryxelia/the.inner-circle.fyi"
+            target="_blank"
+            rel="noopener noreferrer"
+        >commit: {{ most_recent_commit_hash }}</a>
+        <a
+            id="linkToServer"
+            href="https://discord.gg/ryxelia"
+            target="_blank"
+            rel="noopener noreferrer"
+        >join the server</a>
+        <script src="{{ get_file('public/js/ring.js') }}"></script>
+        <script>loadWebRing("the.inner-circle.fyi");</script>
+    </body>
+</html>

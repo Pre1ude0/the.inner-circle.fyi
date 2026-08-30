@@ -1,0 +1,12 @@
+[Unit]
+Description=the.inner-circle.fyi FastAPI service
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/opt/websites/the.inner-circle.fyi
+ExecStart=/opt/websites/the.inner-circle.fyi/.venv/bin/uvicorn src.ticfyi:app --host 127.0.0.1 --port 7844
+
+[Install]
+WantedBy=multi-user.target
