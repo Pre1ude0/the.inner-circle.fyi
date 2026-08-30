@@ -31,7 +31,7 @@ async def ring_next(request: Request, from_url: str | None = None) -> RedirectRe
         next_index = (current_index + 1) % len(WEB_RING_MEMBERS)
         next_url = WEB_RING_MEMBERS[next_index]
         return RedirectResponse(
-            url=URL(next_url).replace(scheme="https"),
+            url=URL(scheme="https", netloc=next_url),
             status_code=HTTPStatus.FOUND,
         )
 
@@ -48,7 +48,7 @@ async def ring_back(request: Request, from_url: str | None = None) -> RedirectRe
         next_index = (current_index - 1) % len(WEB_RING_MEMBERS)
         next_url = WEB_RING_MEMBERS[next_index]
         return RedirectResponse(
-            url=URL(next_url).replace(scheme="https"),
+            url=URL(scheme="https", netloc=next_url),
             status_code=HTTPStatus.FOUND,
         )
 
@@ -62,7 +62,7 @@ async def ring_back(request: Request, from_url: str | None = None) -> RedirectRe
 async def ring_go_to(request: Request, member: str | None = None) -> RedirectResponse:
     if member is not None and member in WEB_RING_MEMBERS:
         return RedirectResponse(
-            url=URL(member).replace(scheme="https"),
+            url=URL(scheme="https", netloc=member),
             status_code=HTTPStatus.FOUND,
         )
 
