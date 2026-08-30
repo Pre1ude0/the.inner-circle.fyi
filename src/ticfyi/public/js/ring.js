@@ -28,7 +28,7 @@ function loadWebRing(domain) {
             >
         </a><a href="${base}/" target="_blank" rel="noopener noreferrer">
             <img
-                src="${base}/static/images/button.avif"
+                src="${base}/static/images/inner-button.avif"
                 width="88"
                 height="31"
                 loading="lazy"
