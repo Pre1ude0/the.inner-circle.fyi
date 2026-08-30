@@ -1,10 +1,14 @@
-function loadWebRing(domain) {
-    const container = document.getElementById("innerCircleWebRing");
-    if (!container) {
-        return;
-    }
+const base = "https://the.inner-circle.fyi";
+const script = document.querySelector(`script[src="${base}/ring/ring.js]`)
+ // "data-" for recognized/conventional implementation
+ // Allow for the attributes to be empty, instead defaulting to the hostname
+const domain = script.getAttribute("data-domain") ?? script.getAttribute("domain") ?? window.location.hostname;
 
-    const base = "https://the.inner-circle.fyi";
+function loadWebRing(domain) {
+    const container = document.createElement("innerCircleWebring")
+    container.classList.add("innerCircleWebring") // Class for styling
+    script.parentElement.appendChild(container)
+
     const from = encodeURIComponent(domain);
 
     container.innerHTML = `
@@ -49,3 +53,6 @@ function loadWebRing(domain) {
         </a>
     `;
 }
+
+// Run when page layout is done loading
+document.addEventListener("DOMContentLoaded", () => {loadWebRing(domain)})
