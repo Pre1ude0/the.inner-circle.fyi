@@ -28,7 +28,7 @@ function loadWebRing(domain) {
             #innerCircleWebRingNavBackwards:hover {transform: scale(1.05) translateX(-10px);}
             #innerCircleWebRingNavForwards:hover {transform: scale(1.05) translateX(10px);}
         </style>
-        <a href="${base}/ring/back?from_url=${from}" target="_blank" rel="noopener noreferrer">
+        <a href="${base}/ring/back?from_url=${from}" rel="noopener noreferrer">
             <img
                 src="${base}/static/images/inner-back.avif"
                 width="31"
@@ -48,7 +48,7 @@ function loadWebRing(domain) {
                 alt="the.inner-circle.fyi 88x31px web button"
                 id="innerCircleWebRingNavHome"
             >
-        </a><a href="${base}/ring/next?from_url=${from}" target="_blank" rel="noopener noreferrer">
+        </a><a href="${base}/ring/next?from_url=${from}" rel="noopener noreferrer">
             <img
                 src="${base}/static/images/inner-forward.avif"
                 width="31"
