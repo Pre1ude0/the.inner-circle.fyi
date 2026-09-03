@@ -115,9 +115,6 @@ class TemplateServer(Jinja2Templates):
             shutil.copyfile(f"{fonts_dir}/{file}", f"_served/static/fonts/{file}")
             self._served_files["public/fonts/" + file] = f"static/fonts/{file}"
 
-    # Unsure why this is implemented with multiple functions
-    # instead of one that goes through all the cases, but
-    # it's not my code, so who am I to judge? ¯\_(ツ)_/¯
     def _serve_icons(self) -> None:
         icons_dir = "src/ticfyi/public/icons"
         os.makedirs("_served/static/icons", exist_ok=True)
