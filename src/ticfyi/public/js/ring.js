@@ -29,12 +29,12 @@ async function loadWebRing(domain) {
     container.innerHTML = `
         <style>
             #innerCircleWebRing a {text-decoration: none;}
-            #innerCircleWebRingNavHome {transition: transform 0.4s;}
+            #innerCircleWebRingNavHome {transition: transform 0.4s; vertical-align: middle;}
             #innerCircleWebRingNavHome:hover {transform: scale(1.05) translateY(-2px);}
             #innerCircleWebRingNavBackwards {rotate: 90deg; color: #ffa9fc;}
             #innerCircleWebRingNavForwards {rotate: -90deg; color: #a8eefe;}
-            #innerCircleWebRingNavBackwards, #innerCircleWebRingNavForwards {transition: transform 0.4s; display: inline-block; aspect-ratio: 1; height: 100% }
-            #innerCircleWebRingNavBackwards:hover, #innerCircleWebRingNavForwards:hover {transform: scale(1.05) translateY(10px);}
+            #innerCircleWebRingNavBackwards, #innerCircleWebRingNavForwards {transition: transform 0.4s; display: inline-block; aspect-ratio: 1; vertical-align: middle; transform: scale(0.8);}
+            #innerCircleWebRingNavBackwards:hover, #innerCircleWebRingNavForwards:hover {transform: scale(0.84) translateY(10px);}
         </style>
         <a href="${base}/ring/back?from_url=${from}"
             rel="noopener noreferrer"
